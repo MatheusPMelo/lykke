@@ -4,6 +4,7 @@ const Home = () => {
   return (
     <>
       <Header />
+      {/* jão mete bala */}
     </>
   );
 };
