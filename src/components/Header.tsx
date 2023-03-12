@@ -30,6 +30,7 @@ interface IMenuItems {
   path: string;
 }
 
+// Item de menu
 const MenuItem: FC<IMenuItems> = ({ name, path }) => (
   <li>
     <a
@@ -41,9 +42,10 @@ const MenuItem: FC<IMenuItems> = ({ name, path }) => (
   </li>
 );
 
+// Botão de contato
 const BtnContact: FC<IMenuItems> = ({ name, path }) => (
   <a
-    className="px-8 py-4 bg-gradient-to-r from-primary to-secondary text-white font-medium text-base"
+    className="px-8 py-4 bg-gradient-to-r from-primary to-secondary text-white font-medium text-base duration-300 hover:scale-110"
     href={path}
   >
     {name}
