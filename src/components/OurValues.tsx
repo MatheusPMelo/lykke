@@ -4,6 +4,7 @@ import clsx from "clsx";
 import productDesgin from "../assets/img/productDesign.png";
 import pen from "../assets/img/pen.png";
 import leaf from "../assets/img/leaf.png";
+import dotsBackground from "../assets/img/dotsBackground.png";
 
 const cards = [
   {
@@ -36,14 +37,21 @@ interface ICards {
   description: string;
 }
 
-const Card: FC<ICards> = ({ id, icon, title, description }) => (
+const Card: FC<ICards> = ({ icon, title, description }) => (
   <div className="border flex flex-col justify-center items-center relative p-10">
     <div className="p-6 bg-gradient-to-r from-primary to-secondary w-24 grid place-items-center absolute -top-10">
       <img src={icon} className="w-9" />
     </div>
     <h3 className="text-center mt-12 text-3xl font-semibold mb-5">{title}</h3>
     <p className="text-center text-base font-normal mb-6">{description}</p>
-    <a className="text-center flex justify-center items-center font-semibold text-lg relative before:content-[''] before:absolute before:w-full before:h-0.5 before:bg-primary before:bottom-0" href="http://">
+    <a
+      className="
+        text-center flex justify-center items-center font-semibold text-lg relative
+        hover:before:-bottom-1
+        before:content-[''] before:absolute before:w-full before:h-0.5 before:bg-primary before:bottom-0 before:duration-200
+      "
+      href="#"
+    >
       Learn More
     </a>
   </div>
@@ -65,7 +73,7 @@ const OurValues: FC<IOurValues> = ({
   bigTitle,
 }) => {
   return (
-    <section className="container mx-auto px-4">
+    <section className="container mx-auto px-4 py-24 relative">
       <div
         className={clsx("gap-y-7 md:gap-x-0", [
           twoColumnTitle == true ? "grid grid-cols-1 md:grid-cols-2" : "",
@@ -96,13 +104,20 @@ const OurValues: FC<IOurValues> = ({
             </h1>
           )}
         </div>
-        {description && <p className={clsx("font-normal text-base",[
-          twoColumnTitle !== true ? "text-center mt-5" : "",
-        ])}>{description}</p>}
+        {description && (
+          <p
+            className={clsx("font-normal text-base", [
+              twoColumnTitle !== true ? "text-center mt-5" : "",
+            ])}
+          >
+            {description}
+          </p>
+        )}
       </div>
       <div className="flex gap-x-20 mt-24">
         {cards && cards.map((card) => <Card key={card.id} {...card} />)}
       </div>
+      <img className="absolute -bottom-32 -right-3" src={dotsBackground} />
     </section>
   );
 };
